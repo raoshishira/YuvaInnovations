@@ -9,7 +9,7 @@ export const ui = {
 	en: {
 		or: "or",
 		contact: "Contact",
-		contacts: "Contacts",
+		Contact: "Contact",
 		contactus: "Contact us",
 		projects: "Projects",
 		services: "Services",
@@ -90,7 +90,7 @@ export const ui = {
 	it: {
 		or: "o",
 		contact: "Contattaci",
-		contacts: "Contatti",
+		Contact: "Contatti",
 		contactus: "Contattaci",
 		projects: "Progetti",
 		services: "Servizi",
