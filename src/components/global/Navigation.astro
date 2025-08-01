@@ -19,10 +19,7 @@ let pages = [
 	// 	title: "Services",
 	// 	url: "/services",
 	// },
-	{
-		title: "Blog",
-		url: "/blog/",
-	},
+	
 	{
 		title: t("Contact"),
 		url: "/contact/",
@@ -112,15 +109,7 @@ const { pathname } = Astro.url;
                 </li>
               ))
             }
-            <li>
-              <a href={translatePath(path, `${lang === "it" ? "en" : "it"}`)} class="inline-block cursor-pointer px-1 py-[0.33rem]">
-                <span class="menu-item-container inline-block">
-                  <span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
-                    {lang === "it" ? "en" : "it"}
-                  </span>
-                </span>
-              </a>
-            </li>
+            
           </ul>
         </nav>
       </div>
@@ -261,7 +250,7 @@ const { pathname } = Astro.url;
 			}
 
 			collapseMenu();
-
+			
 			const navContainer = document.querySelector(".nav-container") as HTMLElement;
 
 			function mouseEnterHandler() {
