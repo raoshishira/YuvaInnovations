@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import founderImage from "@/assets/images/founder.webp";
 ---
 
 <section class="section home-dark-section py-12">
@@ -8,7 +9,7 @@ import { Image } from "astro:assets";
     <div class="flex flex-col md:flex-row items-center justify-center gap-x-20 gap-y-12">
       <div class="w-full max-w-xs md:max-w-sm lg:max-w-md fade-in slide-up">
         <Image
-          src="@/assets/images/founder.webp"
+          src={founderImage}
           alt="Founder's Photo"
           width={256}
           height={256}
