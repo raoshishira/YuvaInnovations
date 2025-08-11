@@ -149,3 +149,45 @@ html {
 	background: #fff;
 	mask-image: paint(squircle);
 }
+/* Default hidden menu items in mobile */
+@media (max-width: 768px) {
+  #mobile-menu {
+    position: relative;
+    top: 60px; /* just below navbar */
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end; /* aligns text to the right */
+    padding: 1rem;
+    border-top: 1px solid #333;
+  }
+
+  #mobile-menu.show {
+    display: flex;
+  }
+
+  #mobile-menu .menu-item {
+    color: white !important; /* white text */
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: right; /* right-align text */
+    border-bottom: 1px solid #444;
+  }
+
+  #mobile-menu .menu-item:last-child {
+    border-bottom: none;
+  }
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,87 @@
+---
+const clients = await Astro.glob("../../assets/images/clients/*.svg");
+const collaborations = await Astro.glob(
+  "../../assets/images/collaborations/*.svg"
+);
+---
+
+<section class="container relative z-2 py-16 md:py-20 lg:py-24">
+  
+  <!-- Clients Section -->
+  <div class="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
+    <h3 class="mb-8 text-center text-3xl font-bold">Our Clients</h3>
+    <div class="flex animate-infinite-scroll whitespace-nowrap">
+      {
+        clients.map((client) => (
+          <div class="flex items-center justify-center p-4 mx-4 client-logo">
+            <img
+              src={client.default.src}
+              alt={client.default.src.split("/").pop().split(".")[0]}
+            />
+          </div>
+        ))
+      }
+      {
+        clients.map((client) => (
+          <div class="flex items-center justify-center p-4 mx-4 client-logo">
+            <img
+              src={client.default.src}
+              alt={client.default.src.split("/").pop().split(".")[0]}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Collaborations Section -->
+  <div class="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
+    <h3 class="mb-8 text-center text-3xl font-bold">Our Collaborations</h3>
+    <div class="flex flex-wrap justify-center">
+      {
+        collaborations.map((collab) => (
+          <div class="flex items-center justify-center p-4 mx-4 collab-logo">
+            <img
+              src={collab.default.src}
+              alt={collab.default.src.split("/").pop().split(".")[0]}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <style>
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 25s linear infinite;
+  }
+
+  /* Faster on mobile */
+  @media (max-width: 768px) {
+    .animate-infinite-scroll {
+      animation-duration: 12s; /* Was 25s, now much faster */
+    }
+  }
+
+  /* Force sizes regardless of global CSS */
+  .client-logo img {
+    width: 288px !important;
+    height: auto !important;
+  }
+
+  .collab-logo img {
+    width: 150px !important;
+    height: auto !important;
+  }
+</style>
+
+</section>

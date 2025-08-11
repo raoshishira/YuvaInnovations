@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="section home-dark-section py-12">
+  <div class="col-span-12 col-start-1 mx-auto max-w-7xl">
+    <h2 class="text-3xl font-bold mb-8 text-center fade-in">Meet the Founder</h2>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-x-20 gap-y-12">
+      <div class="w-full max-w-xs md:max-w-sm lg:max-w-md fade-in slide-up">
+        <Image
+          src="/src/assets/images/founder.webp"
+          alt="Founder's Photo"
+          width={256}
+          height={256}
+          class="w-full h-auto rounded-full object-cover"
+        />
+      </div>
+      <article class="flex flex-col gap-4 text-center md:text-left fade-in slide-up">
+        <h3 class="text-xl font-bold">Dr. Chidanand B</h3>
+        <p>
+          Dr. Chidanand B, the founder of Yuva Innovations, is a forward-thinking digital strategist with a strong
+          background in client-centric services. With a proven track record of working with a wide range of clients — from
+          solo entrepreneurs to well-established companies — he has earned highly rated reviews and trust for his
+          commitment to quality, timely delivery, and creative problem-solving.
+        </p>
+        <p>
+          Chidanand’s vision is rooted in making professional digital services accessible, affordable, and result-oriented
+          for small and medium-sized businesses. His leadership is defined by strong client relationships, transparent
+          communication, and an unwavering focus on excellence.
+        </p>
+        <p>
+          Under his guidance, Yuva Innovations continues to grow as a trusted digital and print solutions partner, helping
+          businesses turn ideas into impactful brand experiences.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
