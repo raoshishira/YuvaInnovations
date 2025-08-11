@@ -36,8 +36,8 @@ export const ui = {
 		"uiux.content": "We build social media strategies that do more than just gain followers — they spark conversations, drive engagement, and build loyal communities. From content planning and design to campaign execution and analytics, we manage your brand’s presence across platforms with consistency and creativity.",
 		"seo.content": "Yuva Innovations' SEO services are designed to increase your website's visibility and drive organic traffic. We use a blend of the latest SEO strategies and techniques to improve your search engine rankings, focusing on both on-page and off-page optimization.",
 		"advertising.content": "Our advertising services aim to maximize your ROI through targeted and effective ad campaigns. We specialize in creating compelling ad content and strategies that resonate with your audience, utilizing various platforms like Google Ads and social media to enhance your brand's reach and engagement.",
-		"privacy.wip": "Work in progress",
-		"privacy.wip.content": "This page will be updated soon",
+		"privacy.wip": "Privacy Policy",
+		"privacy.wip.content": "At Yuva Innovations, we take your privacy seriously. We collect only the information necessary to provide and improve our services. Personal data is handled with strict confidentiality and is never shared with third parties without your consent, except where required by law. We use cookies and similar technologies to enhance your experience on our website. You have the right to access, update, or delete your personal information at any time. By using our website, you agree to our collection and use of data as outlined in this policy. For any questions or concerns regarding your privacy, please contact us directly.",
 		"faqs.question1": "What services do you offer?",
 		"faqs.answer1":
 			"We provide end-to-end marketing—from branding and websites to SEO, ads, and content creation.",
