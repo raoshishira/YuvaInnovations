@@ -1,8 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Cta from "@/components/blog/Cta.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
-import Comments from "@components/blog/Comments.astro";
 import Title from "@components/global/Title.astro";
 import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
 import { Icon } from "astro-icon/components";
@@ -46,17 +44,11 @@ const readingTime = getArticleReadingTime(body);
 				<p class="max-w-2xl text-base text-slate-500">
 					<em>{frontmatter.description}</em>
 				</p>
-
-				{
-					frontmatter?.link && (
-						<a class="font-mono text-xl font-bold" href={frontmatter?.link} target="_blank">
-							<Icon name="iconamoon:link-external-thin" class="inline" /> {t("blog.gotoproject")}
-						</a>
-					)
-				}
 			</div>
+
 			<div class="mt-12 w-full justify-center">
-				<Image class="mt-12 w-full rounded-lg object-cover" src={frontmatter.image.source} alt={frontmatter.image.alt} />
+				<Image class="mt-12 max-h-[30rem] w-full rounded-lg object-cover mx-auto" src={frontmatter.image.source} alt={frontmatter.image.alt}/>
+
 				<div class="flex justify-between px-2 pt-4 font-mono text-sm">
 					<div class="flex flex-wrap gap-1">
 						{frontmatter?.tags?.length > 0 && <span class="py-3">TAGS:</span>}
@@ -75,8 +67,6 @@ const readingTime = getArticleReadingTime(body);
 
 				<div class="prose-styles mt-12"><slot /></div>
 			</div>
-			<Comments />
 		</div>
 	</section>
-	<Cta />
 </BaseLayout>
