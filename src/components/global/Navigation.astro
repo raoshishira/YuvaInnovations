@@ -9,10 +9,10 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 let pages = [
-  { title: "Home", url: "/" },
-  { title: "About Us", url: "/about/" },
-  { title: "Blog", url: "/blog/" },
-  { title: t("Contact"), url: "/contact/" },
+  { title: "Home", url: "/", icon: "octicon:home-16" },
+  { title: "About Us", url: "/about/", icon: "octicon:info-16" },
+  { title: "Blog", url: "/blog/", icon: "octicon:rss-16" },
+  { title: t("Contact"), url: "/contact/", icon: "octicon:mail-16" },
 ];
 
 const { pathname } = Astro.url;
@@ -37,39 +37,19 @@ const { pathname } = Astro.url;
           </a>
         </div>
 
-        <!-- Mobile Menu Toggle -->
+        <!-- Mobile Navigation Icons -->
         <div class="flex flex-row items-center justify-end md:hidden">
-          <a class="px-3 py-[0.4rem] pl-4" href={translatePath("/contact/")} aria-label="Contact Page">
-            <Icon class="text-white" name="octicon:mail-16" width="20" />
-          </a>
-          <button
-            id="menu-toggle"
-            aria-label="Toggle navbar"
-            class="inline-flex items-center justify-center px-3 py-[0.4rem] pr-4 text-white hover:text-blue-300"
-          >
-            <!-- Hamburger -->
-            <svg id="icon-hamburger" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <!-- Close -->
-            <svg id="icon-close" class="h-6 w-6 hidden" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+          {
+            pages.map((page) => (
+              <a class="px-3 py-[0.4rem] pl-4" href={translatePath(page.url)} aria-label={page.title}>
+                <Icon class="text-white" name={page.icon} width="20" />
+              </a>
+            ))
+          }
         </div>
 
-        <!-- Navigation -->
-        <nav id="mobile-menu" class="hidden flex-grow flex-col justify-center py-12 md:flex md:py-0">
+        <!-- Desktop Navigation -->
+        <nav id="desktop-menu" class="hidden md:flex flex-grow flex-col justify-center py-12 md:flex md:py-0">
           <ul class="flex list-none flex-col items-end justify-center gap-2 px-2 text-center text-3xl md:flex-row md:items-center md:text-base">
             {
               pages.map((page) => (
@@ -129,18 +109,3 @@ const { pathname } = Astro.url;
     }
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById("menu-toggle");
-    const menu = document.getElementById("mobile-menu");
-    const iconHamburger = document.getElementById("icon-hamburger");
-    const iconClose = document.getElementById("icon-close");
-
-    toggleBtn.addEventListener("click", () => {
-      menu.classList.toggle("show");   // toggle hidden on mobile menu
-      iconHamburger.classList.toggle("hidden");
-      iconClose.classList.toggle("hidden");
-    });
-  });
-</script>

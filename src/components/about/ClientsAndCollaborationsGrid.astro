@@ -10,27 +10,22 @@ const collaborations = await Astro.glob(
   <!-- Clients Section -->
   <div class="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
     <h3 class="mb-8 text-center text-3xl font-bold">Our Clients</h3>
-    <div class="flex animate-infinite-scroll whitespace-nowrap">
-      {
-        clients.map((client) => (
-          <div class="flex items-center justify-center p-4 mx-4 client-logo">
-            <img
-              src={client.default.src}
-              alt={client.default.src.split("/").pop().split(".")[0]}
-            />
-          </div>
-        ))
-      }
-      {
-        clients.map((client) => (
-          <div class="flex items-center justify-center p-4 mx-4 client-logo">
-            <img
-              src={client.default.src}
-              alt={client.default.src.split("/").pop().split(".")[0]}
-            />
-          </div>
-        ))
-      }
+
+    <!-- Scrolling wrapper -->
+    <div class="relative overflow-hidden scrolling">
+      <div class="flex animate-scroll whitespace-nowrap will-change-transform">
+        {
+          [...clients, ...clients].map((client) => (  // Duplicate in one continuous track
+            <div class="flex items-center justify-center px-4 min-w-[120px] md:min-w-[160px] lg:min-w-[180px] shrink-0">
+              <img
+                src={client.default.src}
+                alt={client.default.src.split('/').pop().split('.')[0]}
+                class="h-20 md:h-12 lg:h-20 w-auto object-contain"
+              />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 
@@ -43,7 +38,8 @@ const collaborations = await Astro.glob(
           <div class="flex items-center justify-center p-4 mx-4 collab-logo">
             <img
               src={collab.default.src}
-              alt={collab.default.src.split("/").pop().split(".")[0]}
+              alt={collab.default.src.split('/').pop().split('.')[0]}
+              class="w-[200px] h-auto object-contain"
             />
           </div>
         ))
@@ -52,36 +48,52 @@ const collaborations = await Astro.glob(
   </div>
 
   <style>
-  @keyframes infinite-scroll {
-    from {
-      transform: translateX(0);
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
     }
-    to {
-      transform: translateX(-50%);
+
+    .animate-scroll {
+      display: flex;
+      animation: scroll 30s linear infinite;
     }
-  }
 
-  .animate-infinite-scroll {
-    animation: infinite-scroll 25s linear infinite;
-  }
-
-  /* Faster on mobile */
-  @media (max-width: 768px) {
-    .animate-infinite-scroll {
-      animation-duration: 12s; /* Was 25s, now much faster */
+    /* Hovering pauses the entire scroll */
+    .scrolling:hover .animate-scroll {
+      animation-play-state: paused;
     }
-  }
 
-  /* Force sizes regardless of global CSS */
-  .client-logo img {
-    width: 288px !important;
-    height: auto !important;
-  }
+    /* Make it faster on smaller devices */
+    @media (max-width: 768px) {
+      .animate-scroll {
+        animation-duration: 15s;
+      }
+    }
 
-  .collab-logo img {
-    width: 150px !important;
-    height: auto !important;
-  }
-</style>
+    /* Optional: smooth fade mask on edges */
+    .scrolling::before,
+    .scrolling::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 80px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
 
+    .scrolling::before {
+      left: 0;
+      background: linear-gradient(to right, white, transparent);
+    }
+
+    .scrolling::after {
+      right: 0;
+      background: linear-gradient(to left, white, transparent);
+    }
+  </style>
 </section>
