@@ -1,8 +1,11 @@
 ---
-const clients = await Astro.glob("../../assets/images/clients/*.svg");
-const collaborations = await Astro.glob(
-  "../../assets/images/collaborations/*.svg"
-);
+type ImageModule = string;
+
+const clientImports = import.meta.glob<ImageModule>("../../assets/images/clients/*.svg");
+const clients: ImageModule[] = await Promise.all(Object.values(clientImports).map(async (importer) => (await importer()).default));
+
+const collabImports = import.meta.glob<ImageModule>("../../assets/images/collaborations/*.svg");
+const collaborations: ImageModule[] = await Promise.all(Object.values(collabImports).map(async (importer) => (await importer()).default));
 ---
 
 <section class="container relative z-2 py-16 md:py-20 lg:py-24">
@@ -18,8 +21,8 @@ const collaborations = await Astro.glob(
           [...clients, ...clients].map((client) => (  // Duplicate in one continuous track
             <div class="flex items-center justify-center px-4 min-w-[120px] md:min-w-[160px] lg:min-w-[180px] shrink-0">
               <img
-                src={client.default.src}
-                alt={client.default.src.split('/').pop().split('.')[0]}
+                src={client.src}
+                alt={client.src.split('/').pop().split('.')[0]}
                 class="h-20 md:h-12 lg:h-20 w-auto object-contain"
               />
             </div>
@@ -34,11 +37,11 @@ const collaborations = await Astro.glob(
     <h3 class="mb-8 text-center text-3xl font-bold">Our Collaborations</h3>
     <div class="flex flex-wrap justify-center">
       {
-        collaborations.map((collab) => (
+        collaborations.map((collab: ImageModule) => (
           <div class="flex items-center justify-center p-4 mx-4 collab-logo">
             <img
-              src={collab.default.src}
-              alt={collab.default.src.split('/').pop().split('.')[0]}
+              src={collab.src}
+              alt={collab.src.split('/').pop().split('.')[0]}
               class="w-[200px] h-auto object-contain"
             />
           </div>

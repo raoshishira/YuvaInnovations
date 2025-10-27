@@ -1,9 +1,9 @@
 {
-	"name": "@majesticooss/mintaka",
+	"name": "yuva-innovations",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"description": "majestico.co website",
+	"description": "Yuva Innovations website",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/majesticooss/mintaka.git"
