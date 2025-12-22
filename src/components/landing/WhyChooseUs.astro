@@ -1,130 +1,189 @@
 ---
+import { Icon } from "astro-icon/components";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section id="whychoose" class="relative overflow-hidden bg-slate-100">
-	<div class="mx-auto px-8 py-12 md:px-12 lg:py-24 2xl:max-w-7xl">
-		<div class="mb-12 text-center">
-			<div class="mb-6 inline-flex items-center justify-center gap-4">
-				<div class="h-1 w-20 bg-stone-900"></div>
-				<span class="text-xs font-semibold uppercase tracking-wide text-stone-600">
-					{t("whychoose.badge")}
-				</span>
-				<div class="h-1 w-20 bg-stone-900"></div>
+<section id="whychoose" class="whychoose-section relative bg-white">
+	<div class="wrapper col-span-12 h-screen w-full overflow-hidden">
+		<!-- Header (Pinned or visible in first point) -->
+		<div class="absolute inset-x-0 top-12 z-10 text-center lg:top-20">
+			<div class="mb-4 inline-flex items-center justify-center gap-4">
+				<div class="h-1 w-12 bg-stone-900"></div>
+				<span class="text-xs font-semibold uppercase tracking-wide text-stone-600">{t("whychoose.badge")}</span>
+				<div class="h-1 w-12 bg-stone-900"></div>
 			</div>
-			<h2 class="font-display text-4xl font-semibold text-stone-900 lg:text-6xl">
+			<h2 class="font-display text-3xl font-bold text-stone-900 lg:text-5xl">
 				{t("whychoose.title")}
 			</h2>
-			<p class="mx-auto mt-4 max-w-3xl text-lg text-stone-600">
-				{t("whychoose.subtitle")}
-			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-			<!-- Reason 1 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason1.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason1.desc")}
-					</p>
-				</div>
-			</div>
+		<div class="indicators absolute left-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+			{
+				[1, 2, 3, 4, 5, 6].map(() => (
+					<div class="indicator h-2 w-2 rounded-full border border-stone-300 bg-transparent transition-all duration-300" />
+				))
+			}
+		</div>
 
-			<!-- Reason 2 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason2.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason2.desc")}
-					</p>
-				</div>
-			</div>
-
-			<!-- Reason 3 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason3.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason3.desc")}
-					</p>
-				</div>
-			</div>
-
-			<!-- Reason 4 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason4.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason4.desc")}
-					</p>
-				</div>
-			</div>
-
-			<!-- Reason 5 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason5.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason5.desc")}
-					</p>
-				</div>
-			</div>
-
-			<!-- Reason 6 -->
-			<div
-				class="group relative rounded-3xl border border-stone-200 bg-white p-8 transition-all duration-300 hover:border-stone-900 hover:shadow-lg">
-				<div class="relative">
-					<div
-						class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-900 transition-transform duration-300 group-hover:scale-110">
-						<span class="text-2xl text-white">✔</span>
-					</div>
-					<h3 class="mb-3 text-xl font-semibold text-stone-900">
-						{t("whychoose.reason6.title")}
-					</h3>
-					<p class="leading-relaxed text-stone-600">
-						{t("whychoose.reason6.desc")}
-					</p>
-				</div>
-			</div>
+		<div class="points-container relative h-full w-full">
+			{
+				[1, 2, 3, 4, 5, 6].map((i) => {
+					const titleKey = `whychoose.reason${i}.title` as any;
+					const descKey = `whychoose.reason${i}.desc` as any;
+					return (
+						<div class="why-point absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-10 px-8 lg:flex-row lg:gap-20 lg:px-24">
+							<div class="why-icon-wrapper flex h-32 w-32 shrink-0 items-center justify-center rounded-3xl bg-slate-50 shadow-inner lg:h-64 lg:w-64">
+								<Icon
+									name={
+										[
+											"ic:baseline-print",
+											"ic:baseline-local-offer",
+											"ic:baseline-auto-graph",
+											"ic:baseline-verified",
+											"ic:baseline-location-city",
+											"ic:baseline-handshake",
+										][i - 1]
+									}
+									class="h-16 w-16 text-stone-900 lg:h-32 lg:w-32"
+								/>
+							</div>
+							<article class="max-w-2xl text-center lg:text-left">
+								<h3 class="mb-6 font-display text-2xl font-bold text-stone-900 lg:text-5xl">{t(titleKey)}</h3>
+								<p class="text-lg leading-relaxed text-stone-600 lg:text-xl">{t(descKey)}</p>
+							</article>
+						</div>
+					);
+				})
+			}
 		</div>
 	</div>
 </section>
+
+<style>
+	.whychoose-section {
+		width: 100%;
+		display: block;
+		position: relative;
+	}
+	.why-point {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+</style>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initWhyChoose() {
+		const section = document.querySelector(".whychoose-section") as HTMLElement;
+		const wrapper = section?.querySelector(".wrapper") as HTMLElement;
+		const points = gsap.utils.toArray(".why-point") as HTMLElement[];
+		const indicators = gsap.utils.toArray(".indicator") as HTMLElement[];
+
+		if (!section || !wrapper || points.length === 0) return;
+
+		// Cleanup existing triggers
+		ScrollTrigger.getById("whychoose-master")?.kill();
+
+		const totalSteps = points.length;
+		const scrollFactor = 100; // 100% of viewport height per step
+
+		// Master Timeline for pinning + transitions
+		const masterTl = gsap.timeline({
+			scrollTrigger: {
+				id: "whychoose-master",
+				trigger: section,
+				start: "top top",
+				end: `+=${scrollFactor * totalSteps}%`,
+				pin: wrapper,
+				pinSpacing: true,
+				scrub: 1,
+				snap: {
+					snapTo: 1 / (totalSteps - 1),
+					duration: 0.2,
+					delay: 0,
+					ease: "none",
+				},
+			},
+		});
+
+		// Initial state via GSAP
+		gsap.set(points, { opacity: 0, autoAlpha: 0, scale: 1.1 });
+		gsap.set(points[0], { opacity: 1, autoAlpha: 1, scale: 1 });
+		gsap.set(indicators, { backgroundColor: "transparent", scale: 1 });
+		gsap.set(indicators[0], { backgroundColor: "#1c1917", scale: 1.5 });
+
+		// Build transitions
+		points.forEach((point, i) => {
+			if (i > 0) {
+				// Hide previous
+				masterTl.to(
+					points[i - 1],
+					{
+						opacity: 0,
+						autoAlpha: 0,
+						scale: 0.9,
+						duration: 0.5,
+					},
+					i - 0.5,
+				);
+
+				masterTl.to(
+					indicators[i - 1],
+					{
+						backgroundColor: "transparent",
+						scale: 1,
+						duration: 0.3,
+					},
+					i - 0.5,
+				);
+
+				// Show current
+				masterTl.to(
+					point,
+					{
+						opacity: 1,
+						autoAlpha: 1,
+						scale: 1,
+						duration: 0.5,
+					},
+					i - 0.5,
+				);
+
+				masterTl.to(
+					indicators[i],
+					{
+						backgroundColor: "#1c1917",
+						scale: 1.5,
+						duration: 0.3,
+					},
+					i - 0.5,
+				);
+			}
+		});
+
+		ScrollTrigger.refresh();
+	}
+
+	// Initialization sequence
+	const setup = () => {
+		initWhyChoose();
+		setTimeout(() => ScrollTrigger.refresh(), 200);
+	};
+
+	window.addEventListener("load", setup);
+	document.addEventListener("astro:after-swap", setup);
+
+	if (document.readyState === "complete") {
+		setup();
+	}
+</script>

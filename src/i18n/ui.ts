@@ -15,21 +15,17 @@ export const ui = {
 		services: "Services",
 		homepage: "Homepage",
 		tagline:
-			"Digital Marketing + Complete Printing Solutions Under One Roof",
+			"We’re a full stack agency combining strategy, design, content, and performance. From branding to campaigns, we handle every layer of digital presence - building, launching, and scaling brands with clarity and impact.",
 		"projects.yours": "Your project",
 		"projects.see": "See project",
-		"hero.title.main": "Yuva Innovations",
-		"hero.title.line1": "Yuva",
-		"hero.title.line2": "Innovations",
-		"hero.title.1": "Digital Marketing",
-		"hero.title.2": "Printing Solutions",
-		"hero.title.3": "Creative Design",
-		"hero.title.4": "Brand Identity",
+		"hero.title.main": "We create",
+		"hero.title.1": "Impact",
+		"hero.title.2": "Identity",
+		"hero.title.3": "Success",
+		"hero.title.4": "Brands",
 		"hero.subtitle":
-			"We help startups, local businesses, and brands grow with powerful digital marketing, creative design, and end-to-end printing services - all under one roof.",
+			"Our digital agency specializes in crafting captivating websites that convert and sell. Contact us for a free consultation.At Yuva Innovations, we don’t just build websites-we shape stories, craft campaigns, and engineer growth. Let’s co-create a digital presence that inspires action. Reach out for a free consultation.",
 		"hero.scroll": "scroll down to explore more",
-		"hero.cta.consultation": "📞 Get Free Consultation",
-		"hero.cta.whatsapp": "💬 WhatsApp Us",
 		"websites.title": "Websites",
 		"apps.title": "Marketing Collaterals",
 		"uiux.title": "Social Media",
@@ -189,6 +185,28 @@ export const ui = {
 		"footer.newsletter": "Iscriviti alla",
 		"footer.newsletter2": "newsletter",
 		"footer.yourmail": "La tua email",
+		"whychoose.badge": "Perché Sceglierci",
+		"whychoose.title": "Perché Yuva Innovations?",
+		"whychoose.subtitle":
+			"Siamo più di un semplice fornitore di servizi: siamo il tuo partner di crescita, impegnato a offrire qualità, creatività e risultati.",
+		"whychoose.reason1.title": "Digitale + Stampa sotto lo stesso tetto",
+		"whychoose.reason1.desc":
+			"Ottieni tutto ciò di cui hai bisogno - dallo sviluppo di siti web e marketing digitale a biglietti da visita, brochure e banner - tutto da un unico partner di fiducia.",
+		"whychoose.reason2.title": "Pacchetti convenienti per startup e PMI",
+		"whychoose.reason2.desc":
+			"Comprendiamo i vincoli di budget. I nostri pacchetti sono progettati per offrire il massimo valore senza compromettere la qualità, perfetti per le aziende in crescita.",
+		"whychoose.reason3.title": "Approccio creativo orientato ai risultati",
+		"whychoose.reason3.desc":
+			"Non ci limitiamo a eseguire, stabiliamo strategie. Ogni progetto è personalizzato in base ai tuoi obiettivi, garantendo risultati misurabili e un impatto significativo.",
+		"whychoose.reason4.title": "Consegna puntuale e garanzia di qualità",
+		"whychoose.reason4.desc":
+			"Rispettiamo le scadenze e manteniamo standard elevati. Dall'ideazione alla consegna, ci assicuriamo che ogni dettaglio soddisfi le tue aspettative.",
+		"whychoose.reason5.title": "Competenza locale con esperienza nel settore",
+		"whychoose.reason5.desc":
+			"Comprendiamo le dinamiche del mercato locale e le combiniamo con anni di esperienza nel settore per fornire soluzioni che funzionano davvero.",
+		"whychoose.reason6.title": "Supporto dedicato e partnership a lungo termine",
+		"whychoose.reason6.desc":
+			"Non siamo qui solo per un progetto - costruiamo relazioni durature, offrendo supporto continuo e guida man mano che la tua azienda cresce.",
 	},
 } as const;
 

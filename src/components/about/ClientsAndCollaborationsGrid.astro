@@ -32,16 +32,16 @@ const collaborations = await Promise.all(Object.values(collabImports).map(async 
 
 		<!-- Scrolling wrapper -->
 		<div class="scrolling relative w-full max-w-full overflow-hidden">
-			<div class="animate-scroll flex whitespace-nowrap will-change-transform">
+			<div class="animate-infinite-scroll flex w-max whitespace-nowrap will-change-transform">
 				{
-					[...clients, ...clients].map(
+					[...clients, ...clients, ...clients].map(
 						(
-							client, // Duplicate in one continuous track
+							client, // Triple the items to ensure no gaps on any screen size
 						) => (
 							<div class="flex min-w-[120px] shrink-0 items-center justify-center px-4 md:min-w-[160px] lg:min-w-[180px]">
 								<img
 									src={client.src}
-									alt={client.src.split("/").pop().split(".")[0]}
+									alt={client.src.split("/").pop()?.split(".")[0] || "Client Logo"}
 									class="client-logo h-20 w-auto object-contain transition-all duration-300 md:h-12 lg:h-20"
 								/>
 							</div>
@@ -61,7 +61,7 @@ const collaborations = await Promise.all(Object.values(collabImports).map(async 
 					<div class="collab-logo mx-4 flex items-center justify-center p-4">
 						<img
 							src={collab.src}
-							alt={collab.src.split("/").pop().split(".")[0]}
+							alt={collab.src.split("/").pop()?.split(".")[0] || "Collaboration Logo"}
 							class="collab-logo-img h-auto w-[200px] object-contain transition-all duration-300"
 						/>
 					</div>
@@ -92,29 +92,23 @@ const collaborations = await Promise.all(Object.values(collabImports).map(async 
 			opacity: 1;
 		}
 
-		@keyframes scroll {
+		@keyframes infiniteScroll {
 			from {
 				transform: translateX(0);
 			}
 			to {
-				transform: translateX(-50%);
+				transform: translateX(-33.333%);
 			}
 		}
 
-		.animate-scroll {
-			display: flex;
-			animation: scroll 30s linear infinite;
-		}
-
-		/* Hovering pauses the entire scroll */
-		.scrolling:hover .animate-scroll {
-			animation-play-state: paused;
+		.animate-infinite-scroll {
+			animation: infiniteScroll 40s linear infinite;
 		}
 
 		/* Make it faster on smaller devices */
 		@media (max-width: 768px) {
-			.animate-scroll {
-				animation-duration: 15s;
+			.animate-infinite-scroll {
+				animation-duration: 20s;
 			}
 		}
 

@@ -10,28 +10,13 @@ const translatePath = useTranslatedPath(lang);
 <section id="hero" class="section home-dark-section hero min-h-screen">
 	<div class="mx-auto flex h-full flex-col py-4 lg:py-10">
 		<div class="relative flex flex-1 flex-col justify-around rounded-lg pb-10 pt-20 lg:rounded-2xl">
-			<div class="flex justify-center px-4">
-				<h1 class="text-center font-display text-4xl font-extrabold uppercase leading-none text-black sm:text-6xl md:text-8xl lg:text-9xl">
-					<span class="block md:inline">{t("hero.title.line1")}</span><span class="hidden md:inline"></span><span class="block md:inline">
-						{t("hero.title.line2")}
-					</span>
-					<span class="rotator-container relative block w-full overflow-visible" style="min-height: 6rem;">
-						<span
-							class="rotator-word absolute left-1/2 top-4 -translate-x-1/2 text-4xl text-gray-500 opacity-100 sm:text-6xl md:text-7xl lg:text-8xl">
-							{t("hero.title.1")}
-						</span>
-						<span
-							class="rotator-word absolute left-1/2 top-4 -translate-x-1/2 text-4xl text-gray-500 opacity-0 sm:text-6xl md:text-7xl lg:text-8xl">
-							{t("hero.title.2")}
-						</span>
-						<span
-							class="rotator-word absolute left-1/2 top-4 -translate-x-1/2 text-4xl text-gray-500 opacity-0 sm:text-6xl md:text-7xl lg:text-8xl">
-							{t("hero.title.3")}
-						</span>
-						<span
-							class="rotator-word absolute left-1/2 top-4 -translate-x-1/2 text-4xl text-gray-500 opacity-0 sm:text-6xl md:text-7xl lg:text-8xl">
+			<div class="flex justify-center">
+				<h1 class="text-center font-display text-5xl font-extrabold uppercase sm:text-7xl md:text-8xl lg:text-9xl">
+					<span>{t("hero.title.main")}</span>
+					<span class="rotator relative inline-flex h-20 w-full justify-center md:h-24 lg:h-32">
+						<span>{t("hero.title.1")}</span><span>{t("hero.title.2")}</span><span>{t("hero.title.3")}</span><span>
 							{t("hero.title.4")}
-						</span>
+						</span><span>{t("hero.title.1")}</span>
 					</span>
 				</h1>
 			</div>
@@ -39,36 +24,21 @@ const translatePath = useTranslatedPath(lang);
 				<p class="mt-8 max-w-3xl font-mono lg:text-lg">
 					{t("hero.subtitle")}
 				</p>
-				<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-					<!-- Phone Consultation CTA -->
-					<div class="squircle-bg rounded-lg bg-stone-900" data-cursor-hover data-cursor-parallax>
+				<div class="flex flex-col items-center justify-center gap-3 lg:col-start-1">
+					<div class="squircle-bg rounded-lg bg-zinc-900" data-cursor-hover data-cursor-parallax>
 						<a
-							class="flex h-12 w-full min-w-[240px] flex-1 items-center justify-center gap-2 px-6 py-3 text-lg text-slate-200 transition-all hover:text-white sm:w-auto md:font-bold"
-							aria-label="Get Free Consultation"
-							href="tel:+919945852135">
-							<span class="text-xl">📞</span>
-							<span>Get Free Consultation</span>
+							class="flex h-10 w-full max-w-52 flex-1 items-center justify-center px-4 py-2 text-xl text-slate-200 transition-all hover:text-white sm:w-auto md:font-bold lg:h-10"
+							aria-label="Contact Page"
+							href={translatePath("/contact/")}>
+							{t("contact")}
 						</a>
 					</div>
 
-					<!-- WhatsApp CTA -->
-					<div class="squircle-bg rounded-lg bg-stone-900" data-cursor-hover data-cursor-parallax>
-						<a
-							class="flex h-12 w-full min-w-[240px] flex-1 items-center justify-center gap-2 px-6 py-3 text-lg text-white transition-all hover:bg-stone-700 sm:w-auto md:font-bold"
-							aria-label="WhatsApp Us"
-							href="https://wa.me/919945852135"
-							target="_blank"
-							rel="noopener noreferrer">
-							<span class="text-xl">💬</span>
-							<span>WhatsApp Us</span>
-						</a>
-					</div>
+					<small>
+						{t("or")}
+						<LinkBlend id="go-projects-button" isButton={true}>{t("hero.scroll")}</LinkBlend>
+					</small>
 				</div>
-
-				<small>
-					{t("or")}
-					<LinkBlend id="go-projects-button" isButton={true}>{t("hero.scroll")}</LinkBlend>
-				</small>
 			</div>
 		</div>
 	</div>
@@ -85,62 +55,95 @@ const translatePath = useTranslatedPath(lang);
 		grid-column: 1 / span 12;
 	}
 
-	/* Rotator animation */
-	.rotator-word {
-		animation: rotateWord 12s infinite;
-		white-space: normal;
-		max-width: 90vw;
+	/* Hero appearance */
+	.hero h1,
+	.hero h2,
+	.hero h3 {
+		margin: 0;
+	}
+	.hero h1 {
+		margin: 0;
+		position: relative;
+		overflow: hidden;
+		visibility: hidden;
+	}
+	.hero h1 > div {
+		position: relative;
+		margin: 0;
+	}
+	.hero :global(.split-parent) {
+		overflow: hidden;
+	}
+	.hero :global(.split-child) {
+		display: inline-block;
 	}
 
-	@media (min-width: 640px) {
-		.rotator-word {
-			white-space: nowrap;
-		}
+	/* Text rotator */
+	.rotator > span {
+		position: absolute;
 	}
 
-	.rotator-word:nth-child(1) {
-		animation-delay: 0s;
-	}
-
-	.rotator-word:nth-child(2) {
-		animation-delay: 3s;
-	}
-
-	.rotator-word:nth-child(3) {
-		animation-delay: 6s;
-	}
-
-	.rotator-word:nth-child(4) {
-		animation-delay: 9s;
-	}
-
-	@keyframes rotateWord {
-		0%,
-		25% {
-			opacity: 1;
-			transform: translate(-50%, 0);
-		}
-		30%,
-		100% {
-			opacity: 0;
-			transform: translate(-50%, -20px);
-		}
+	.rotator > span:not(:nth-child(1)) {
+		opacity: 0;
 	}
 </style>
 
 <script>
 	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	import { SplitText } from "gsap/SplitText";
 	import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-	gsap.registerPlugin(ScrollToPlugin);
+	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
 
 	function init() {
+		const childSplit = new SplitText(".hero h1", {
+			type: "lines",
+			linesClass: "split-child",
+		});
+		const parentSplit = new SplitText(".hero h1", {
+			linesClass: "split-parent",
+		});
+
+		gsap.timeline()
+			.from(childSplit.lines, {
+				duration: 1.5,
+				yPercent: 100,
+				ease: "power4",
+				stagger: 0.1,
+			})
+			.set(".hero h1", { visibility: "visible" }, "<")
+			.then(() => {
+				const words = document.querySelectorAll(".hero .rotator > span");
+
+				let rotatorTimeline = gsap.timeline({ repeat: -1 });
+				rotatorTimeline.timeScale(0.5);
+
+				for (let i = 0; i < words.length; i++) {
+					let delay = i - 1;
+					let wordTL = gsap.timeline();
+					if (i !== 0) {
+						gsap.set(words[i], { opacity: 1 });
+						wordTL.from(words[i], { duration: 1, yPercent: 100, opacity: 0, ease: "power4.out" });
+					} else {
+						// Handle the first one specially
+						delay += 1;
+						gsap.set(words[0], { opacity: 1, yPercent: 0 });
+					}
+
+					if (i !== words.length - 1) {
+						wordTL.to(words[i], { duration: 1, yPercent: -100, opacity: 0, ease: "power4.out" });
+					}
+					rotatorTimeline.add(wordTL, delay);
+				}
+			});
+
 		var goProjectsButton = document.getElementById("go-projects-button");
 		goProjectsButton?.addEventListener("click", function () {
-			gsap.to(window, { duration: 0.5, scrollTo: "#whychoose" });
+			gsap.to(window, { duration: 0.5, scrollTo: "#projects" });
 		});
 	}
 
-	document.removeEventListener("DOMContentLoaded", init);
-	document.addEventListener("DOMContentLoaded", init);
+	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
+	document.addEventListener("DOMContentLoaded", init); // astro:page-load
 </script>

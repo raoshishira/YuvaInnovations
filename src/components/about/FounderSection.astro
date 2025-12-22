@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import founderImage from "@/assets/images/founder.webp";
 ---
 
@@ -22,7 +23,7 @@ import founderImage from "@/assets/images/founder.webp";
 
 			<div class="relative grid gap-12 lg:grid-cols-5 lg:gap-16">
 				<!-- Founder Image -->
-				<div class="lg:col-span-2">
+				<div class="founder-image-wrapper lg:col-span-2">
 					<div class="group relative overflow-hidden rounded-3xl bg-white p-2 shadow-lg">
 						<div class="overflow-hidden rounded-2xl">
 							<Image
@@ -56,7 +57,7 @@ import founderImage from "@/assets/images/founder.webp";
 							<p class="leading-relaxed">
 								Dr. Chidanand B, the founder of <span class="font-semibold text-stone-900">Yuva Innovations</span>, is a
 								forward-thinking digital strategist with a strong background in client-centric services. With a proven track record of
-								working with a wide range of clients — from solo entrepreneurs to well-established companies — he has earned highly
+								working with a wide range of clients - from solo entrepreneurs to well-established companies - he has earned highly
 								rated reviews and trust for his commitment to quality, timely delivery, and creative problem-solving.
 							</p>
 							<p class="leading-relaxed">
@@ -70,7 +71,7 @@ import founderImage from "@/assets/images/founder.webp";
 						<div class="grid gap-4 pt-4 sm:grid-cols-2">
 							<div class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
 								<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-stone-900">
-									<span class="text-xl">🎯</span>
+									<Icon name="ic:baseline-groups" class="h-6 w-6 text-white" />
 								</div>
 								<div>
 									<h4 class="font-semibold text-stone-900">Client-Centric</h4>
@@ -79,7 +80,7 @@ import founderImage from "@/assets/images/founder.webp";
 							</div>
 							<div class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
 								<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-stone-900">
-									<span class="text-xl">⭐</span>
+									<Icon name="ic:baseline-star" class="h-6 w-6 text-white" />
 								</div>
 								<div>
 									<h4 class="font-semibold text-stone-900">Excellence Driven</h4>

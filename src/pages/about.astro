@@ -2,6 +2,8 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navigation from "@/components/global/Navigation.astro";
 import HeroCopy from "@/components/about/HeroCopy.astro";
+import WhyChooseUs from "@/components/landing/WhyChooseUs.astro";
+import Facts from "@/components/landing/Facts.astro";
 import AboutServices from "@/components/about/AboutServices.astro";
 import FounderSection from "@/components/about/FounderSection.astro";
 import ClientsAndCollaborationsGrid from "@/components/about/ClientsAndCollaborationsGrid.astro";
@@ -10,8 +12,12 @@ import ClientsAndCollaborationsGrid from "@/components/about/ClientsAndCollabora
 <BaseLayout>
 	<HeroCopy
 		title="About Us"
-		description="Welcome to Yuva Innovations, your trusted partner for digital marketing, creative design, and complete printing solutions. We specialize in empowering startups, local businesses, and growing brands by building a strong professional identity - both online and offline. Our services span across website development, digital marketing, branding, social media management, graphic design, and all types of end-to-end printing services, including business cards, brochures, banners, flex, signage, promotional materials, and customized print solutions. Whether you're launching a new brand, rebranding an existing business, or looking to scale your visibility, we deliver tailor-made, cost-effective, and result-driven solutions. With years of industry experience and collaborations across diverse sectors, we focus on quality, creativity, and long-term partnerships. From concept to execution, Yuva Innovations ensures everything you need - digital presence, marketing, design, and printing - under one roof."
+		description="Yuva Innovations is your all-in-one partner for digital marketing, creative design, and complete printing solutions. We empower startups and local businesses by building strong professional identities-both online and offline. Whether you need high-performance websites, social media management, or end-to-end printing like branding and signage, we deliver cost-effective, result-driven solutions under one roof."
 	/>
+
+	<WhyChooseUs />
+
+	<Facts />
 
 	<main class="container mx-auto px-4 py-8">
 		<AboutServices />
@@ -25,22 +31,59 @@ import ClientsAndCollaborationsGrid from "@/components/about/ClientsAndCollabora
 </BaseLayout>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-		// Fade-in on scroll with Intersection Observer
-		const fadeEls = document.querySelectorAll(".fade-in");
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-		const observer = new IntersectionObserver(
-			(entries, observer) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add("visible");
-						observer.unobserve(entry.target);
-					}
-				});
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initAboutAnimations() {
+		// Animate Sections on Scroll (excluding whychoose-section to prevent transform conflicts with pinning)
+		const sections = document.querySelectorAll("section:not(.hero):not(.whychoose-section), main > div, #facts-section");
+
+		sections.forEach((section) => {
+			gsap.from(section, {
+				opacity: 0,
+				y: 50,
+				duration: 1,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: section,
+					start: "top 85%",
+					toggleActions: "play none none none",
+				},
+			});
+		});
+
+		// Staggered reveal for Services boxes
+		const serviceBoxes = document.querySelectorAll(".services-grid > .group");
+		if (serviceBoxes.length > 0) {
+			gsap.set(serviceBoxes, { opacity: 1, x: 0 }); // Ensure visible by default
+			gsap.from(serviceBoxes, {
+				opacity: 0,
+				x: (i) => (i === 0 ? -30 : 30),
+				duration: 1,
+				stagger: 0.2,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: ".services-grid",
+					start: "top 80%",
+					toggleActions: "play none none none",
+				},
+			});
+		}
+
+		// Founder Section specific animation
+		gsap.from(".founder-image-wrapper", {
+			opacity: 0,
+			scale: 0.9,
+			duration: 1.2,
+			ease: "back.out(1.7)",
+			scrollTrigger: {
+				trigger: ".founder-image-wrapper",
+				start: "top 80%",
 			},
-			{ threshold: 0.1 },
-		);
+		});
+	}
 
-		fadeEls.forEach((el) => observer.observe(el));
-	});
+	document.addEventListener("DOMContentLoaded", initAboutAnimations);
 </script>
