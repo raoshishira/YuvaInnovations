@@ -3,37 +3,93 @@ import { Image } from "astro:assets";
 import founderImage from "@/assets/images/founder.webp";
 ---
 
-<section class="section home-dark-section py-12">
-  <div class="col-span-12 col-start-1 mx-auto max-w-7xl">
-    <h2 class="text-3xl font-bold mb-8 text-center fade-in">Meet the Founder</h2>
-    <div class="flex flex-col md:flex-row items-center justify-center gap-x-20 gap-y-12">
-      <div class="w-full max-w-xs md:max-w-sm lg:max-w-md fade-in slide-up">
-        <Image
-          src={founderImage}
-          alt="Founder's Photo"
-          width={320}
-          height={480}
-          class="w-full h-auto rounded-lg object-cover"
-        />
-      </div>
-      <article class="flex flex-col gap-4 text-justify fade-in slide-up">
-        <h3 class="text-xl font-bold">Dr. Chidanand B</h3>
-        <p>
-          Dr. Chidanand B, the founder of Yuva Innovations, is a forward-thinking digital strategist with a strong
-          background in client-centric services. With a proven track record of working with a wide range of clients — from
-          solo entrepreneurs to well-established companies — he has earned highly rated reviews and trust for his
-          commitment to quality, timely delivery, and creative problem-solving.
-        </p>
-        <p>
-          Chidanand’s vision is rooted in making professional digital services accessible, affordable, and result-oriented
-          for small and medium-sized businesses. His leadership is defined by strong client relationships, transparent
-          communication, and an unwavering focus on excellence.
-        </p>
-        <p>
-          Under his guidance, Yuva Innovations continues to grow as a trusted digital and print solutions partner, helping
-          businesses turn ideas into impactful brand experiences.
-        </p>
-      </article>
-    </div>
-  </div>
+<section class="relative overflow-hidden bg-slate-100 py-16 lg:py-24">
+	<div class="mx-auto max-w-7xl px-8 md:px-12">
+		<!-- Section Header -->
+		<div class="mb-16 text-center">
+			<div class="mb-6 inline-flex items-center justify-center gap-4">
+				<div class="h-1 w-20 bg-stone-900"></div>
+				<span class="text-xs font-semibold uppercase tracking-wide text-stone-600">Leadership</span>
+				<div class="h-1 w-20 bg-stone-900"></div>
+			</div>
+			<h2 class="font-display text-4xl font-bold text-stone-900 lg:text-5xl">Meet the Founder</h2>
+		</div>
+
+		<!-- Founder Content -->
+		<div class="relative">
+			<!-- Decorative Quote Mark -->
+			<div class="absolute -left-4 -top-8 font-serif text-9xl text-stone-200 opacity-50 lg:-left-8">"</div>
+
+			<div class="relative grid gap-12 lg:grid-cols-5 lg:gap-16">
+				<!-- Founder Image -->
+				<div class="lg:col-span-2">
+					<div class="group relative overflow-hidden rounded-3xl bg-white p-2 shadow-lg">
+						<div class="overflow-hidden rounded-2xl">
+							<Image
+								src={founderImage}
+								alt="Dr. Chidanand B - Founder of Yuva Innovations"
+								width={400}
+								height={600}
+								class="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+							/>
+						</div>
+						<!-- Name Badge -->
+						<div class="absolute bottom-6 left-6 right-6 rounded-2xl bg-stone-900/95 p-4 backdrop-blur-sm">
+							<h3 class="font-display text-2xl font-bold text-white">Dr. Chidanand B</h3>
+							<p class="mt-1 text-sm text-stone-300">Founder & Digital Strategist</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Founder Bio -->
+				<div class="flex flex-col justify-center lg:col-span-3">
+					<div class="space-y-6">
+						<!-- Vision Statement -->
+						<div class="rounded-2xl border-l-4 border-stone-900 bg-white p-6 shadow-sm">
+							<p class="text-lg italic leading-relaxed text-stone-700">
+								"Making professional digital services accessible, affordable, and result-oriented for businesses of all sizes."
+							</p>
+						</div>
+
+						<!-- Bio Paragraphs -->
+						<div class="space-y-4 text-stone-600">
+							<p class="leading-relaxed">
+								Dr. Chidanand B, the founder of <span class="font-semibold text-stone-900">Yuva Innovations</span>, is a
+								forward-thinking digital strategist with a strong background in client-centric services. With a proven track record of
+								working with a wide range of clients — from solo entrepreneurs to well-established companies — he has earned highly
+								rated reviews and trust for his commitment to quality, timely delivery, and creative problem-solving.
+							</p>
+							<p class="leading-relaxed">
+								His leadership is defined by <span class="font-semibold text-stone-900">strong client relationships</span>,
+								transparent communication, and an unwavering focus on excellence. Under his guidance, Yuva Innovations continues to
+								grow as a trusted digital and print solutions partner, helping businesses turn ideas into impactful brand experiences.
+							</p>
+						</div>
+
+						<!-- Key Highlights -->
+						<div class="grid gap-4 pt-4 sm:grid-cols-2">
+							<div class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
+								<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-stone-900">
+									<span class="text-xl">🎯</span>
+								</div>
+								<div>
+									<h4 class="font-semibold text-stone-900">Client-Centric</h4>
+									<p class="text-sm text-stone-600">Proven track record with diverse clients</p>
+								</div>
+							</div>
+							<div class="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm">
+								<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-stone-900">
+									<span class="text-xl">⭐</span>
+								</div>
+								<div>
+									<h4 class="font-semibold text-stone-900">Excellence Driven</h4>
+									<p class="text-sm text-stone-600">Quality, timely delivery, innovation</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

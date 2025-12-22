@@ -87,17 +87,8 @@ module.exports = {
 		},
 	],
 	plugins: [
-		require.resolve("prettier-plugin-astro"),
 		require("@tailwindcss/typography"),
 		require("@tailwindcss/forms"),
 		require("@tailwindcss/aspect-ratio"),
-	],
-	overrides: [
-		{
-			files: "*.astro",
-			options: {
-				parser: "astro",
-			},
-		},
 	],
 };

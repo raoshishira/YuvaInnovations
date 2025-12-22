@@ -1,102 +1,143 @@
 ---
-type ImageModule = string;
+type ImageModule = {
+	default: {
+		src: string;
+		width: number;
+		height: number;
+		format: string;
+	};
+};
 
-const clientImports = import.meta.glob<ImageModule>("../../assets/images/clients/*.svg");
-const clients: ImageModule[] = await Promise.all(Object.values(clientImports).map(async (importer) => (await importer()).default));
+const clientImports = import.meta.glob<ImageModule>("../../assets/images/clients/*.svg") as Record<string, () => Promise<ImageModule>>;
+const clientsUnsorted = await Promise.all(Object.values(clientImports).map(async (importer) => (await importer()).default));
 
-const collabImports = import.meta.glob<ImageModule>("../../assets/images/collaborations/*.svg");
-const collaborations: ImageModule[] = await Promise.all(Object.values(collabImports).map(async (importer) => (await importer()).default));
+// Sort clients numerically by filename (1.svg, 2.svg, 3.svg... not 1.svg, 10.svg, 11.svg...)
+const clients = clientsUnsorted.sort((a, b) => {
+	const numA = parseInt(a.src.split("/").pop()?.split(".")[0] || "0");
+	const numB = parseInt(b.src.split("/").pop()?.split(".")[0] || "0");
+	return numA - numB;
+});
+
+const collabImports = import.meta.glob<ImageModule>("../../assets/images/collaborations/*.{svg,jpg,JPG,png,PNG}") as Record<
+	string,
+	() => Promise<ImageModule>
+>;
+const collaborations = await Promise.all(Object.values(collabImports).map(async (importer) => (await importer()).default));
 ---
 
-<section class="container relative z-2 py-16 md:py-20 lg:py-24">
-  
-  <!-- Clients Section -->
-  <div class="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
-    <h3 class="mb-8 text-center text-3xl font-bold">Our Clients</h3>
+<section class="z-2 relative w-full max-w-full overflow-x-hidden py-8 md:py-12 lg:py-16">
+	<!-- Clients Section -->
+	<div class="relative w-full max-w-full overflow-hidden py-6 md:py-8 lg:py-10">
+		<h3 class="mb-8 text-center text-3xl font-bold">Our Clients</h3>
 
-    <!-- Scrolling wrapper -->
-    <div class="relative overflow-hidden scrolling">
-      <div class="flex animate-scroll whitespace-nowrap will-change-transform">
-        {
-          [...clients, ...clients].map((client) => (  // Duplicate in one continuous track
-            <div class="flex items-center justify-center px-4 min-w-[120px] md:min-w-[160px] lg:min-w-[180px] shrink-0">
-              <img
-                src={client.src}
-                alt={client.src.split('/').pop().split('.')[0]}
-                class="h-20 md:h-12 lg:h-20 w-auto object-contain"
-              />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
+		<!-- Scrolling wrapper -->
+		<div class="scrolling relative w-full max-w-full overflow-hidden">
+			<div class="animate-scroll flex whitespace-nowrap will-change-transform">
+				{
+					[...clients, ...clients].map(
+						(
+							client, // Duplicate in one continuous track
+						) => (
+							<div class="flex min-w-[120px] shrink-0 items-center justify-center px-4 md:min-w-[160px] lg:min-w-[180px]">
+								<img
+									src={client.src}
+									alt={client.src.split("/").pop().split(".")[0]}
+									class="client-logo h-20 w-auto object-contain transition-all duration-300 md:h-12 lg:h-20"
+								/>
+							</div>
+						),
+					)
+				}
+			</div>
+		</div>
+	</div>
 
-  <!-- Collaborations Section -->
-  <div class="relative w-full overflow-hidden py-12 md:py-16 lg:py-20">
-    <h3 class="mb-8 text-center text-3xl font-bold">Our Collaborations</h3>
-    <div class="flex flex-wrap justify-center">
-      {
-        collaborations.map((collab: ImageModule) => (
-          <div class="flex items-center justify-center p-4 mx-4 collab-logo">
-            <img
-              src={collab.src}
-              alt={collab.src.split('/').pop().split('.')[0]}
-              class="w-[200px] h-auto object-contain"
-            />
-          </div>
-        ))
-      }
-    </div>
-  </div>
+	<!-- Collaborations Section -->
+	<div class="relative w-full overflow-hidden py-6 md:py-8 lg:py-10">
+		<h3 class="mb-8 text-center text-3xl font-bold">Our Collaborations</h3>
+		<div class="flex flex-wrap justify-center">
+			{
+				collaborations.map((collab) => (
+					<div class="collab-logo mx-4 flex items-center justify-center p-4">
+						<img
+							src={collab.src}
+							alt={collab.src.split("/").pop().split(".")[0]}
+							class="collab-logo-img h-auto w-[200px] object-contain transition-all duration-300"
+						/>
+					</div>
+				))
+			}
+		</div>
+	</div>
 
-  <style>
-    @keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
+	<style>
+		/* Grayscale effect for logos */
+		.client-logo {
+			filter: grayscale(100%);
+			opacity: 0.7;
+		}
 
-    .animate-scroll {
-      display: flex;
-      animation: scroll 30s linear infinite;
-    }
+		.client-logo:hover {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
 
-    /* Hovering pauses the entire scroll */
-    .scrolling:hover .animate-scroll {
-      animation-play-state: paused;
-    }
+		.collab-logo-img {
+			filter: grayscale(100%);
+			opacity: 0.7;
+		}
 
-    /* Make it faster on smaller devices */
-    @media (max-width: 768px) {
-      .animate-scroll {
-        animation-duration: 15s;
-      }
-    }
+		.collab-logo-img:hover {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
 
-    /* Optional: smooth fade mask on edges */
-    .scrolling::before,
-    .scrolling::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 80px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
+		@keyframes scroll {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(-50%);
+			}
+		}
 
-    .scrolling::before {
-      left: 0;
-      background: linear-gradient(to right, white, transparent);
-    }
+		.animate-scroll {
+			display: flex;
+			animation: scroll 30s linear infinite;
+		}
 
-    .scrolling::after {
-      right: 0;
-      background: linear-gradient(to left, white, transparent);
-    }
-  </style>
+		/* Hovering pauses the entire scroll */
+		.scrolling:hover .animate-scroll {
+			animation-play-state: paused;
+		}
+
+		/* Make it faster on smaller devices */
+		@media (max-width: 768px) {
+			.animate-scroll {
+				animation-duration: 15s;
+			}
+		}
+
+		/* Optional: smooth fade mask on edges */
+		.scrolling::before,
+		.scrolling::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			width: 80px;
+			height: 100%;
+			z-index: 2;
+			pointer-events: none;
+		}
+
+		.scrolling::before {
+			left: 0;
+			background: linear-gradient(to right, white, transparent);
+		}
+
+		.scrolling::after {
+			right: 0;
+			background: linear-gradient(to left, white, transparent);
+		}
+	</style>
 </section>

@@ -2,46 +2,45 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navigation from "@/components/global/Navigation.astro";
 import HeroCopy from "@/components/about/HeroCopy.astro";
+import AboutServices from "@/components/about/AboutServices.astro";
 import FounderSection from "@/components/about/FounderSection.astro";
 import ClientsAndCollaborationsGrid from "@/components/about/ClientsAndCollaborationsGrid.astro";
 ---
 
 <BaseLayout>
-  <HeroCopy 
-    title="About Us" 
-    description="Welcome to Yuva Innovations — your one-stop destination for comprehensive digital and print solutions. We specialize in empowering startups, local businesses, and growing brands through a wide range. Our mission is to help businesses build a professional identity both online and offline. Whether you’re launching a new brand, rebranding an existing one, or looking to strengthen your digital presence, we provide tailored, cost-effective, and impactful solutions that drive real growth. Over the years, we have collaborated with numerous companies across different industries, delivering quality work and maintaining long-term partnerships. Our end-to-end service model ensures that from concept to execution, you have everything you need under one roof — digital presence, design, marketing, and print support." 
-  />
-  
-  <main class="container mx-auto px-4 py-8">
-    <section class="mb-12"></section>
+	<HeroCopy
+		title="About Us"
+		description="Welcome to Yuva Innovations, your trusted partner for digital marketing, creative design, and complete printing solutions. We specialize in empowering startups, local businesses, and growing brands by building a strong professional identity - both online and offline. Our services span across website development, digital marketing, branding, social media management, graphic design, and all types of end-to-end printing services, including business cards, brochures, banners, flex, signage, promotional materials, and customized print solutions. Whether you're launching a new brand, rebranding an existing business, or looking to scale your visibility, we deliver tailor-made, cost-effective, and result-driven solutions. With years of industry experience and collaborations across diverse sectors, we focus on quality, creativity, and long-term partnerships. From concept to execution, Yuva Innovations ensures everything you need - digital presence, marketing, design, and printing - under one roof."
+	/>
 
-    <FounderSection />
+	<main class="container mx-auto px-4 py-8">
+		<AboutServices />
 
-    <section class="clients-and-collabs">
-      <ClientsAndCollaborationsGrid />
-    </section>
-  </main>
+		<FounderSection />
 
-
+		<section class="clients-and-collabs">
+			<ClientsAndCollaborationsGrid />
+		</section>
+	</main>
 </BaseLayout>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Fade-in on scroll with Intersection Observer
-    const fadeEls = document.querySelectorAll(".fade-in");
+	document.addEventListener("DOMContentLoaded", () => {
+		// Fade-in on scroll with Intersection Observer
+		const fadeEls = document.querySelectorAll(".fade-in");
 
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+		const observer = new IntersectionObserver(
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.1 },
+		);
 
-    fadeEls.forEach((el) => observer.observe(el));
-  });
+		fadeEls.forEach((el) => observer.observe(el));
+	});
 </script>

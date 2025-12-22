@@ -1,0 +1,89 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="bg-white py-16 lg:py-24">
+	<div class="mx-auto max-w-7xl px-8 md:px-12">
+		<div class="mb-16 text-center">
+			<h2 class="font-display text-4xl font-bold text-stone-900 lg:text-5xl">Our Services</h2>
+			<p class="mx-auto mt-4 max-w-3xl text-lg text-stone-600">Comprehensive solutions for your digital and printing needs</p>
+		</div>
+
+		<div class="grid gap-8 md:grid-cols-2">
+			<!-- Digital Services -->
+			<div class="rounded-3xl border border-stone-200 bg-slate-50 p-8 lg:p-12">
+				<div class="mb-6 inline-flex items-center gap-3">
+					<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-stone-900">
+						<span class="text-2xl">💻</span>
+					</div>
+					<h3 class="font-display text-2xl font-bold text-stone-900 lg:text-3xl">Digital Services</h3>
+				</div>
+				<ul class="space-y-3 text-stone-600">
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-orange-400">✓</span>
+						<span>Website Design & Development</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-orange-400">✓</span>
+						<span>Digital Marketing (SEO, Google Ads, Meta Ads)</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-orange-400">✓</span>
+						<span>Social Media Management</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-orange-400">✓</span>
+						<span>Branding & Logo Design</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-orange-400">✓</span>
+						<span>Content Creation & Creative Design</span>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Printing Services -->
+			<div class="rounded-3xl border-2 border-stone-900 bg-gradient-to-br from-stone-50 to-white p-8 lg:p-12">
+				<div class="mb-6 inline-flex items-center gap-3">
+					<div class="flex h-12 w-12 items-center justify-center rounded-xl bg-stone-900">
+						<span class="text-2xl">🖨️</span>
+					</div>
+					<h3 class="font-display text-2xl font-bold text-stone-900 lg:text-3xl">Printing Services</h3>
+				</div>
+				<div class="mb-4 inline-block rounded-full bg-stone-900 px-4 py-1 text-sm font-semibold text-white">
+					All Printing Services – From Design to Delivery
+				</div>
+				<ul class="space-y-3 text-stone-600">
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>Business Cards & Letterheads</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>Brochures, Flyers & Catalogues</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>Banners, Flex & Sign Boards</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>Posters, Stickers & Labels</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>Promotional & Corporate Printing</span>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="mt-1 text-stone-900">✓</span>
+						<span>End-to-End Custom Printing Solutions</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+```

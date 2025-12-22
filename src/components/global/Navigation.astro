@@ -9,103 +9,102 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 let pages = [
-  { title: "Home", url: "/", icon: "octicon:home-16" },
-  { title: "About Us", url: "/about/", icon: "octicon:info-16" },
-  { title: "Blog", url: "/blog/", icon: "octicon:rss-16" },
-  { title: t("Contact"), url: "/contact/", icon: "octicon:mail-16" },
+	{ title: "Home", url: "/", icon: "octicon:home-16" },
+	{ title: "About Us", url: "/about/", icon: "octicon:info-16" },
+	{ title: "Blog", url: "/blog/", icon: "octicon:rss-16" },
+	{ title: t("Contact"), url: "/contact/", icon: "octicon:mail-16" },
 ];
 
 const { pathname } = Astro.url;
 ---
 
 <header class="z-50 w-full">
-  <div class="navigation fixed top-10 right-0 z-50 w-full">
-    <div class="mx-auto w-full md:max-w-fit">
-      <div
-        class="shadow-thick resizable nav-container squircle relative mx-auto flex w-full flex-col justify-center items-center overflow-x-hidden bg-zinc-900 backdrop-blur-xl backdrop-filter md:flex-row md:items-center md:justify-between md:py-0"
-      >
-        <!-- Logo -->
-        <div class="logo-container flex items-center justify-center px-4 md:px-6" style="height: 100%;">
-          <a href="/" class="block h-full max-h-full">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={50}
-              height={40}
-              class="max-h-[3rem] w-auto object-contain"
-            />
-          </a>
-        </div>
+	<div class="navigation fixed right-0 top-10 z-50 w-full">
+		<div class="mx-auto w-full px-2 md:max-w-fit md:px-0">
+			<div
+				class="shadow-thick resizable nav-container squircle relative mx-auto flex w-full flex-row items-center justify-between overflow-hidden bg-zinc-900 backdrop-blur-xl backdrop-filter md:justify-between md:py-0">
+				<!-- Logo -->
+				<div class="logo-container flex flex-shrink-0 items-center justify-start px-2 py-2 md:px-6">
+					<a href="/" class="block">
+						<Image src="/logo.svg" alt="Logo" width={50} height={40} class="h-10 w-auto object-contain md:max-h-[3rem]" />
+					</a>
+				</div>
 
-        <!-- Mobile Navigation Icons -->
-        <div class="flex flex-row items-center justify-end md:hidden">
-          {
-            pages.map((page) => (
-              <a class="px-3 py-[0.4rem] pl-4" href={translatePath(page.url)} aria-label={page.title}>
-                <Icon class="text-white" name={page.icon} width="20" />
-              </a>
-            ))
-          }
-        </div>
+				<!-- Mobile Navigation Icons -->
+				<div class="flex flex-shrink-0 flex-row items-center justify-end gap-1 pr-2 md:hidden">
+					{
+						pages.map((page) => (
+							<a class="px-2 py-2" href={translatePath(page.url)} aria-label={page.title}>
+								<Icon class="text-white" name={page.icon} width="20" />
+							</a>
+						))
+					}
+				</div>
 
-        <!-- Desktop Navigation -->
-        <nav id="desktop-menu" class="hidden md:flex flex-grow flex-col justify-center py-12 md:py-0">
-          <ul class="flex list-none flex-col items-end justify-center gap-2 px-2 text-center text-3xl md:flex-row md:items-center md:text-base">
-            {
-              pages.map((page) => (
-                <li data-cursor-hover>
-                  <a
-                    href={translatePath(page.url)}
-                    class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
-                      page.url === pathname ||
-                      page.url === pathname.replace(/^\/it|\/$/, "") ||
-                      (page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/it/blog")))
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    <span class="menu-item-container inline-block">
-                      <span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white">
-                        {page.title}
-                      </span>
-                    </span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
+				<!-- Desktop Navigation -->
+				<nav id="desktop-menu" class="hidden flex-grow flex-col justify-center py-12 md:flex md:py-0">
+					<ul
+						class="flex list-none flex-col items-end justify-center gap-2 px-2 text-center text-3xl md:flex-row md:items-center md:text-base">
+						{
+							pages.map((page) => (
+								<li data-cursor-hover>
+									<a
+										href={translatePath(page.url)}
+										class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
+											page.url === pathname ||
+											page.url === pathname.replace(/^\/it|\/$/, "") ||
+											(page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/it/blog")))
+												? "active"
+												: ""
+										}`}>
+										<span class="menu-item-container inline-block">
+											<span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white">
+												{page.title}
+											</span>
+										</span>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
 </header>
 
 <style>
-  .navigation {
-    mix-blend-mode: difference;
-  }
-  nav a .menu-item-container {
-    border-radius: 0.45rem;
-  }
-  nav a.active .menu-item-container,
-  nav a:hover .menu-item-container {
-    transition: background-color 0.3s ease;
-  }
-  nav a.active .menu-item-container {
-    background: #aaa;
-  }
-  nav a:hover .menu-item-container {
-    background: #fff;
-  }
-  nav a.active .menu-item,
-  nav a:hover .menu-item {
-    color: #000;
-  }
+	.navigation {
+		/* Removed mix-blend-mode: difference; as it causes visibility issues on mobile */
+	}
 
-  /* Force menu visible on md and up even if hidden */
-  @media (min-width: 768px) {
-    #mobile-menu {
-      display: flex !important;
-    }
-  }
+	/* Ensure navigation has proper background on all devices */
+	.nav-container {
+		background-color: rgba(24, 24, 27, 0.95) !important;
+	}
+
+	nav a .menu-item-container {
+		border-radius: 0.45rem;
+	}
+	nav a.active .menu-item-container,
+	nav a:hover .menu-item-container {
+		transition: background-color 0.3s ease;
+	}
+	nav a.active .menu-item-container {
+		background: #aaa;
+	}
+	nav a:hover .menu-item-container {
+		background: #fff;
+	}
+	nav a.active .menu-item,
+	nav a:hover .menu-item {
+		color: #000;
+	}
+
+	/* Force menu visible on md and up even if hidden */
+	@media (min-width: 768px) {
+		#mobile-menu {
+			display: flex !important;
+		}
+	}
 </style>
