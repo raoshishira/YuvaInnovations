@@ -36,6 +36,8 @@ Yuva Innovations is a modern, high-performance website built with **Astro 5**. I
 - `/public`: Static assets, including the logo and PWA assets.
 
 ## Recent Updates
+- [2026-01-13] **Contact Email Updated**:
+  - ✅ Changed all contact email instances to `yuvainnovations@gmail.com` (Footer, Terms, Privacy).
 - [2025-12-22] **Package Updates Completed**: All packages updated to latest stable versions:
   - **Astro**: 5.12.6 → 5.16.6
   - **@astrojs/mdx**: 4.3.1 → 4.3.13

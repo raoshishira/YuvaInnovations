@@ -1,5 +1,5 @@
 ---
-import Contact from "@/components/forms/Contact.astro";
+import ContactForm from "@/components/forms/Contact.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import type { AstroSeoProps } from "@astrolib/seo";
 
@@ -7,10 +7,10 @@ const seo: AstroSeoProps = {
 	title: "Contact Yuva Innovations: Get in Touch for Innovative Full Stack Marketing Solutions",
 	description:
 		"Reach out to Yuva Innovations for expert Marketing services. Connect with us to discuss your project and explore cutting-edge solutions.",
-	canonical: "https:yuvainnivations.in/contact",
+	canonical: "https://yuvainnovations.in/contact",
 };
 ---
 
 <BaseLayout seo={seo}>
-	<Contact />
+	<ContactForm />
 </BaseLayout>
